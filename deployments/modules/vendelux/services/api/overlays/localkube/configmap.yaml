@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-api
+  namespace: "vendelux-localkube"
+data:
+  CODEFLY__MODULE: "vendelux"
+  CODEFLY__RUNNING: "true"
+  CODEFLY__SERVICE: "api"
+  CODEFLY__WORKSPACE: "vendelux"

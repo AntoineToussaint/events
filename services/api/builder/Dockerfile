@@ -1,0 +1,42 @@
+# The builder image, used to build the virtual environment
+FROM codeflydev/python-poetry:0.0.10 as builder
+
+WORKDIR /app
+
+COPY code/pyproject.toml code/poetry.lock ./
+
+ENV POETRY_NO_INTERACTION=1 \
+    POETRY_VIRTUALENVS_IN_PROJECT=1 \
+    POETRY_VIRTUALENVS_CREATE=1
+
+WORKDIR /app
+
+RUN poetry install --without dev --no-root
+
+
+# Runner
+FROM codeflydev/python-poetry:0.0.10 as runtime
+
+WORKDIR /app
+# Set up a non-root user
+RUN adduser -D appuser
+USER appuser
+
+ENV VIRTUAL_ENV=/app/.venv \
+    PATH="/app/.venv/bin:$PATH"
+
+COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+
+COPY --chown=appuser service.codefly.yaml .
+
+# We go be smarter here
+
+COPY --chown=appuser code/src code/src
+
+
+
+
+WORKDIR /app/code
+
+# Standards port for REST is 8080
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8080"]

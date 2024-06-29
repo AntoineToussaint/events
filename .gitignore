@@ -1,0 +1,5 @@
+.codefly
+.cache
+*.pyc
+*.secret.env
+secret.yaml

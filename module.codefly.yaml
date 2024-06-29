@@ -1,0 +1,4 @@
+kind: module
+name: vendelux
+services:
+    - name: api

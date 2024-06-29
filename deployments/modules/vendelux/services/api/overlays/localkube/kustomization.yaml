@@ -1,0 +1,10 @@
+resources:
+  - ../../base
+  - configmap.yaml
+  - secret.yaml
+  
+
+images:
+  - name: image:tag
+    newName: codefly-dev/vendelux/api
+    newTag: 0.0.0

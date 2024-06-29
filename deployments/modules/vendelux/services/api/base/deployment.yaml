@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: vendelux-localkube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: image:tag
+          envFrom:
+            - configMapRef:
+                name: config-api
+            - secretRef:
+                name: secret-api

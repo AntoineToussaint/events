@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: "vendelux-localkube"
+  labels:
+    istio-injection: "enabled"
