@@ -4,7 +4,7 @@ module: vendelux
 agent:
     kind: codefly:service
     name: python-fastapi
-    version: 0.0.70
+    version: 0.0.73
     publisher: codefly.dev
 endpoints:
     - name: rest

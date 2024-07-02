@@ -5,7 +5,7 @@ import time
 import json
 
 import codefly_sdk.codefly as codefly
-from codefly_cli.codefly import with_dependencies, with_cli_logs, with_debug, with_code_path, with_silent
+from codefly_cli.ci import with_dependencies, with_cli_logs, with_debug, with_code_path, with_silent
 
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
 
