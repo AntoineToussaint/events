@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: api
+        sha: ba5615aaef44
     spec:
       containers:
         - name: api
